@@ -278,6 +278,128 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
+        /* Completion Page Styling */
+        .completion-page {
+            text-align: center;
+            padding: 40px 20px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+            border-radius: 15px;
+            color: white;
+            animation: popIn 0.8s ease-out;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .completion-icon {
+            font-size: 6em;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .completion-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #c9a03e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .completion-message {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .completion-highlight {
+            background: rgba(201, 160, 62, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #c9a03e;
+            font-style: italic;
+        }
+
+        .email-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #c9a03e;
+            color: #1a2a3a;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+
+        .email-button:hover {
+            background: #d4b15a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .email-button:active {
+            transform: translateY(0);
+        }
+
+        .email-icon {
+            font-size: 1.4em;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #c9a03e;
+            color: #1a2a3a;
+        }
+
         .chapter-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 2em;
@@ -318,6 +440,44 @@
             background: #f9f7f4;
             font-style: italic;
             color: #4a5a6a;
+        }
+
+        .chapter-body .note {
+            background: #e8f0fe;
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .chapter-body .warning {
+            background: #fff3e0;
+            border-left: 4px solid #e67e22;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .chapter-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .chapter-body th {
+            background: #1a2a3a;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .chapter-body td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .chapter-body tr:nth-child(even) {
+            background: #f9f7f4;
         }
 
         .nav-buttons {
@@ -442,6 +602,19 @@
                 padding: 15px;
             }
 
+            .completion-title {
+                font-size: 2em;
+            }
+
+            .completion-message {
+                font-size: 1.1em;
+            }
+
+            .email-button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+
             .nav-buttons {
                 flex-wrap: wrap;
                 gap: 10px;
@@ -480,6 +653,10 @@
 
             .cover-subtitle {
                 font-size: 1em;
+            }
+
+            .completion-title {
+                font-size: 1.6em;
             }
 
             .nav-btn {
@@ -539,7 +716,7 @@
                 
                 <div class="nav-buttons">
                     <button class="nav-btn" id="prev-btn" onclick="changeChapter(-1)">← Previous</button>
-                    <span class="page-indicator" id="page-indicator">Chapter 1 of 32</span>
+                    <span class="page-indicator" id="page-indicator">Chapter 1 of 33</span>
                     <button class="nav-btn" id="next-btn" onclick="changeChapter(1)">Next →</button>
                 </div>
             </div>
@@ -547,7 +724,7 @@
     </div>
 
     <script>
-        // COMPLETE BOOK - ALL 32 CHAPTERS WITH FULL CONTENT
+        // COMPLETE ENGLISH BOOK - 31 CHAPTERS + COVER + COMPLETION PAGE = 33 PAGES
         const chapters = [
             // COVER - Chapter 0
             {
@@ -1360,6 +1537,43 @@ Don't waste years worrying about things you can't change. Focus on what you can:
 It's not too late. It's never too late.
 
 Be kind to yourself. Be patient. And keep walking the path."`
+            },
+            // COMPLETION PAGE - Chapter 32 (NEW)
+            {
+                part: "CONGRATULATIONS!",
+                title: "Congratulations! You've Completed the Book",
+                isCompletion: true,
+                content: `
+                    <div class="completion-page">
+                        <div class="completion-icon">🎉✨🏆</div>
+                        <div class="completion-title">CONGRATULATIONS!</div>
+                        <div class="completion-message">
+                            You have successfully completed reading <strong>"Path to Mastery"</strong>. 
+                            You are now on the right path to understanding your body and taking control of your life.
+                        </div>
+                        <div class="completion-highlight">
+                            "A journey of a thousand miles begins with a single step. You have taken that step."
+                        </div>
+                        
+                        <a href="mailto:onlinebookstore65@gmail.com" class="email-button">
+                            <span class="email-icon">📧</span>
+                            onlinebookstore65@gmail.com
+                        </a>
+                        
+                        <div style="margin-top: 20px; color: rgba(255,255,255,0.8);">
+                            Click the link above to contact us for any questions
+                        </div>
+                        
+                        <div class="social-links">
+                            <span class="social-link">📱 @onlinebookstore65</span>
+                            <span class="social-link">📘 Path to Mastery</span>
+                        </div>
+                        
+                        <div style="margin-top: 40px; font-size: 0.9em; color: rgba(255,255,255,0.5);">
+                            © 2025 Dr. King D. All rights reserved.
+                        </div>
+                    </div>
+                `
             }
         ];
 
@@ -1378,8 +1592,15 @@ Be kind to yourself. Be patient. And keep walking the path."`
                     chapterDiv.textContent = '📖 Cover';
                     chapterDiv.onclick = () => goToChapter(index);
                     tocList.appendChild(chapterDiv);
+                } else if (chapter.isCompletion) {
+                    const chapterDiv = document.createElement('div');
+                    chapterDiv.className = 'toc-chapter';
+                    if (index === currentChapter) chapterDiv.classList.add('active');
+                    chapterDiv.textContent = '🎉 Congratulations';
+                    chapterDiv.onclick = () => goToChapter(index);
+                    tocList.appendChild(chapterDiv);
                 } else {
-                    if (index === 1 || (index > 1 && chapters[index-1].part !== chapter.part && !chapters[index-1].isCover)) {
+                    if (index === 1 || (index > 1 && chapters[index-1].part !== chapter.part && !chapters[index-1].isCover && !chapters[index-1].isCompletion)) {
                         const partDiv = document.createElement('div');
                         partDiv.className = 'toc-part';
                         partDiv.textContent = chapter.part;
@@ -1401,7 +1622,7 @@ Be kind to yourself. Be patient. And keep walking the path."`
             const chapter = chapters[currentChapter];
             
             let content = '';
-            if (chapter.isCover) {
+            if (chapter.isCover || chapter.isCompletion) {
                 content = chapter.content;
             } else {
                 content = `
